@@ -1,4 +1,4 @@
-export default function ValoresPage() {
+export default function ServiciosPage() {
     return (
       <section className="max-w-3xl mx-auto">
         <h2 className="text-2xl font-bold text-blue-800 mb-4">Nuestros Valores</h2>

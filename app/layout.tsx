@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Energía Eficiente',
+  title: 'Voltrik',
   description: 'Servicios de ahorro de energía y calidad eléctrica',
 }
 

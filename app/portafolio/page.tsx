@@ -1,4 +1,4 @@
-export default function ProyectosPage() {
+export default function PortafolioPage() {
     return (
       <section className="max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold text-blue-800 mb-4">Proyectos Destacados</h2>

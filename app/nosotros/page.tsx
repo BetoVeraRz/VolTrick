@@ -1,4 +1,4 @@
-export default function ObjetivoPage() {
+export default function NosotrosPage() {
     return (
       <section className="max-w-3xl mx-auto">
         <h2 className="text-2xl font-bold text-blue-800 mb-4">Nuestro Objetivo</h2>
