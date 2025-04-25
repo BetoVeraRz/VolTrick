@@ -95,7 +95,7 @@ export default function PortafolioPage() {
                 className={`px-4 py-2 rounded-md transition-colors ${
                   index === 0 
                     ? 'bg-primary text-white' 
-                    : 'bg-light-bg hover:bg-primary hover:text-white'
+                    : 'bg-gray-100 hover:bg-primary hover:text-white text-gray-700'
                 }`}
               >
                 {categoria}
@@ -110,7 +110,7 @@ export default function PortafolioPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {proyectos.map((proyecto) => (
-              <div key={proyecto.id} className="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:translate-y-[-5px]">
+              <div key={proyecto.id} className="bg-gray-50 rounded-lg overflow-hidden shadow-md border border-primary/10 transition-transform hover:translate-y-[-5px]">
                 <div className="h-56 overflow-hidden">
                   <img 
                     src={proyecto.imagen} 
@@ -119,19 +119,19 @@ export default function PortafolioPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <span className="inline-block px-3 py-1 text-sm bg-light-bg rounded-full mb-3">
+                  <span className="inline-block px-3 py-1 text-sm bg-primary/10 text-primary rounded-full mb-3">
                     {proyecto.categoria}
                   </span>
-                  <h3 className="text-xl font-bold mb-2">{proyecto.titulo}</h3>
-                  <p className="text-sm text-gray mb-4">{proyecto.descripcion}</p>
-                  <div className="flex justify-between items-center pt-4 border-t border-muted">
+                  <h3 className="text-xl font-bold mb-2 text-dark">{proyecto.titulo}</h3>
+                  <p className="text-sm text-gray-700 mb-4">{proyecto.descripcion}</p>
+                  <div className="flex justify-between items-center pt-4 border-t border-gray-200">
                     <div className="flex items-center gap-2">
                       <Building size={16} className="text-primary" />
-                      <span className="text-sm">{proyecto.cliente}</span>
+                      <span className="text-sm text-gray-700">{proyecto.cliente}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Calendar size={16} className="text-primary" />
-                      <span className="text-sm">{proyecto.fecha}</span>
+                      <span className="text-sm text-gray-700">{proyecto.fecha}</span>
                     </div>
                   </div>
                   <Link 
