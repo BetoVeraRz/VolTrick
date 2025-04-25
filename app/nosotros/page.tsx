@@ -53,36 +53,36 @@ export default function NosotrosPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Misión */}
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div className="bg-primary/10 p-8 rounded-lg shadow-md border border-primary/20">
               <div className="inline-flex items-center justify-center bg-primary w-12 h-12 rounded-full mb-4">
                 <Target size={24} className="text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Misión</h3>
-              <p>
+              <h3 className="text-xl font-bold mb-4 text-dark">Misión</h3>
+              <p className="text-gray-700">
                 Ofrecer soluciones energéticas innovadoras y de alta calidad que mejoren la eficiencia, 
                 reduzcan costos y optimicen el funcionamiento de las instalaciones eléctricas de nuestros clientes.
               </p>
             </div>
             
             {/* Visión */}
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div className="bg-primary/10 p-8 rounded-lg shadow-md border border-primary/20">
               <div className="inline-flex items-center justify-center bg-primary w-12 h-12 rounded-full mb-4">
                 <BookOpen size={24} className="text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Visión</h3>
-              <p>
+              <h3 className="text-xl font-bold mb-4 text-dark">Visión</h3>
+              <p className="text-gray-700">
                 Ser reconocidos como líderes en soluciones de calidad de energía en México, 
                 destacándonos por nuestra excelencia técnica, innovación constante y compromiso con la sostenibilidad.
               </p>
             </div>
             
             {/* Valores */}
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div className="bg-primary/10 p-8 rounded-lg shadow-md border border-primary/20">
               <div className="inline-flex items-center justify-center bg-primary w-12 h-12 rounded-full mb-4">
                 <Award size={24} className="text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Valores</h3>
-              <ul className="space-y-2">
+              <h3 className="text-xl font-bold mb-4 text-dark">Valores</h3>
+              <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
                   <ChevronRight size={18} className="text-primary mt-1 flex-shrink-0" />
                   <span><strong>Excelencia:</strong> en cada proyecto que emprendemos.</span>
@@ -120,7 +120,7 @@ export default function NosotrosPage() {
             {/* Miembro 1 */}
             <div className="text-center">
               <div className="rounded-lg overflow-hidden shadow-md mb-4 mx-auto w-48 h-48">
-                <div className="w-full h-full bg-light-bg flex items-center justify-center">
+                <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                   <Users size={64} className="text-primary" />
                 </div>
               </div>
@@ -131,7 +131,7 @@ export default function NosotrosPage() {
             {/* Miembro 2 */}
             <div className="text-center">
               <div className="rounded-lg overflow-hidden shadow-md mb-4 mx-auto w-48 h-48">
-                <div className="w-full h-full bg-light-bg flex items-center justify-center">
+                <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                   <Users size={64} className="text-primary" />
                 </div>
               </div>
@@ -142,7 +142,7 @@ export default function NosotrosPage() {
             {/* Miembro 3 */}
             <div className="text-center">
               <div className="rounded-lg overflow-hidden shadow-md mb-4 mx-auto w-48 h-48">
-                <div className="w-full h-full bg-light-bg flex items-center justify-center">
+                <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                   <Users size={64} className="text-primary" />
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default function NosotrosPage() {
             {/* Miembro 4 */}
             <div className="text-center">
               <div className="rounded-lg overflow-hidden shadow-md mb-4 mx-auto w-48 h-48">
-                <div className="w-full h-full bg-light-bg flex items-center justify-center">
+                <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                   <Users size={64} className="text-primary" />
                 </div>
               </div>
