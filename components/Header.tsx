@@ -5,23 +5,6 @@ import { Menu, X, Zap } from 'lucide-react'
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  // Detectar scroll para aplicar efectos al header
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
-      }
-    }
-    
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
 
   const toggleMenu = () => setMenuOpen(!menuOpen)
 

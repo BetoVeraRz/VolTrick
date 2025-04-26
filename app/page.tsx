@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Zap, Activity, BarChart2, Database, PieChart } from 'lucide-react';
+import { ArrowRight, Zap, Activity, Database } from 'lucide-react';
 
 export default function HomePage() {
   return (
