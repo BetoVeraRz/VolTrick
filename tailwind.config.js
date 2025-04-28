@@ -20,7 +20,7 @@ module.exports = {
             800: '#1e40af',
             900: '#1e3a8a',
             950: '#172554'
-          }
+        }
         },
         fontFamily: {
           body: ['Inter', 'ui-sans-serif', 'system-ui'],
@@ -30,3 +30,4 @@ module.exports = {
     },
     plugins: []
   }
+
