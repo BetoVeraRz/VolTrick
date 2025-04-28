@@ -10,6 +10,7 @@ export default function HomePage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 tracking-tight drop-shadow-xl">
             Expertos en <span className="text-orange-600">Energía</span> Eléctrica
           </h1>
+          
           <p className="mt-4 md:mt-6 text-lg md:text-xl text-gray-700 mx-auto max-w-3xl">
             Soluciones inteligentes para calidad de energía, cumplimiento de Código de Red y optimización energética para la industria.
           </p>
