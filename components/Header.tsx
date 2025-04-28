@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
-import { Menu, X, Zap } from 'lucide-react'
+import { X, Zap } from 'lucide-react'
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
