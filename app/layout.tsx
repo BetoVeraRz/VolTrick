@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="es">
       <body className={inter.className}>
         <Header />
-        <main className="min-h-screen px-0 sm:px-2 md:px-4 py-8">{children}</main>
+        <main className="">{children}</main>
         <WhatsAppButton />
         <Footer />
       </body>

@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } fr
 
 export function Footer() {
   return (
-    <footer className="bg-light-bg border-t border-muted mt-16">
+    <footer className="dark:bg-gray-900 border-t border-muted">
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Columna 1: Logo e información de la empresa */}
@@ -109,7 +109,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={18} className="text-primary mt-1 flex-shrink-0" />
-                <span>Ciudad de México, México</span>
+                <span>Zapopan, Jalisco</span>
               </li>
               <li className="flex items-start gap-2">
                 <Clock size={18} className="text-primary mt-1 flex-shrink-0" />

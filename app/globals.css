@@ -65,8 +65,27 @@
     background-color: var(--secondary);
   }
 
-  section {
-    margin: 3rem 0;
+  .container-custom {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;    /* Aumentado de 0.25rem a 1rem */
+    padding-right: 2rem;   /* Aumentado de 0.25rem a 1rem */
+  }
+  
+  @media (min-width: 640px) {
+    .container-custom {
+      padding-left: 1.5rem;  /* Aumentado de 0.75rem a 1.5rem */
+      padding-right: 1.5rem; /* Aumentado de 0.75rem a 1.5rem */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container-custom {
+      padding-left: 2rem;    /* Aumentado de 1rem a 2rem */
+      padding-right: 2rem;   /* Aumentado de 1rem a 2rem */
+    }
   }
 }
 
@@ -89,30 +108,6 @@
 
 .bg-light {
   background-color: var(--light-bg);
-}
-
-/* Contenedor personalizado */
-.container-custom {
-  width: 100%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
-@media (min-width: 640px) {
-  .container-custom {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .container-custom {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
 }
 
 /* Efecto de energía para la palabra Energía */

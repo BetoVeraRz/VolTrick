@@ -5,59 +5,70 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-gray-100 py-16 md:py-28">
-        <div className="container-custom mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 tracking-tight">
-            Expertos en <span className="energy-text relative">Energía</span> Eléctrica
-          </h1>
-          
-          <p className="mt-4 md:mt-6 text-lg md:text-xl text-gray-700 mx-auto max-w-3xl">
-            Soluciones tecnológicas avanzadas para calidad de energía, cumplimiento de Código de Red y optimización energética para la industria.
-          </p>
-          
-          <div className="grid md:grid-cols-3 gap-6 mt-8 max-w-4xl mx-auto text-left">
-            <div className="flex items-start gap-2">
-              <Shield className="text-orange-500 mt-1" size={20} />
-              <p className="text-sm text-gray-700"><span className="font-semibold">Certificaciones</span> que garantizan la calidad de nuestros servicios</p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-gray-100 pt-16 md:pt-28 pb-6 md:pb-10">
+        <div className="container-custom mx-auto">
+          <div className="flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-12">
+          <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent"></div>
+            {/* Columna izquierda con información */}
+            <div className="md:w-1/2 md:pr-4">
+              <h1 className="max-md:mt-7 text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 tracking-tight text-left">
+                Expertos en <span className="energy-text relative">Energía</span> Eléctrica
+              </h1>
+
+              <p className="mt-4 md:mt-6 text-lg md:text-xl text-gray-700 text-left">
+                Soluciones tecnológicas avanzadas para calidad de energía, cumplimiento de Código de Red y optimización
+                energética para la industria.
+              </p>
+
+              <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-4 mt-8 text-left">
+                <div className="flex items-start gap-2">
+                  <Shield className="text-orange-500 mt-.5" size={40} />
+                  <p className="text-sm text-gray-700">
+                    <span className="font-semibold">Certificaciones</span> que garantizan la calidad de nuestros servicios
+                  </p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="text-orange-500 mt-.5" size={40} />
+                  <p className="text-sm text-gray-700">
+                    <span className="font-semibold">+200 proyectos</span> implementados con éxito en el sector industrial
+                  </p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Award className="text-orange-500 mt-.5" size={40} />
+                  <p className="text-sm text-gray-700">
+                    <span className="font-semibold">10+ años</span> de experiencia en el sector eléctrico
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 md:mt-10 flex flex-wrap gap-3 md:gap-4">
+                <Link
+                  href="/servicios"
+                  className="inline-block px-6 md:px-8 py-3 md:py-4 text-white bg-orange-600 hover:bg-orange-700 rounded-md text-base md:text-lg font-semibold shadow-md transition-all duration-300 hover:shadow-lg">
+                  Nuestros Servicios
+                </Link>
+                <Link
+                  href="/contacto"
+                  className="inline-block px-6 md:px-8 py-3 md:py-4 bg-white text-gray-800 hover:bg-gray-100 rounded-md text-base md:text-lg font-semibold shadow-md transition-all duration-300 hover:shadow-lg border border-gray-300">
+                  Solicitar Consultoría
+                </Link>
+              </div>
             </div>
-            <div className="flex items-start gap-2">
-              <CheckCircle className="text-orange-500 mt-1" size={20} />
-              <p className="text-sm text-gray-700"><span className="font-semibold">+200 proyectos</span> implementados con éxito en el sector industrial</p>
+
+            {/* Columna derecha con imagen */}
+            <div className="md:w-1/2 mt-8 md:mt-0">
+              <div className="rounded-xl md:rounded-2xl shadow-xl overflow-hidden border border-gray-200 h-full">
+                <img
+                  src="/image.png"
+                  alt="Ingeniería eléctrica profesional"
+                  className="w-full h-full object-cover hover:scale-102 transition-transform duration-700"
+                />
+              </div>
             </div>
-            <div className="flex items-start gap-2">
-              <Award className="text-orange-500 mt-1" size={20} />
-              <p className="text-sm text-gray-700"><span className="font-semibold">10+ años</span> de experiencia en el sector eléctrico</p>
-            </div>
-          </div>
-          
-          <div className="mt-8 md:mt-12 rounded-xl md:rounded-2xl shadow-xl overflow-hidden border border-gray-200">
-            <img
-              src="/hero.jpg"
-              alt="Ingeniería eléctrica profesional"
-              className="w-full h-auto object-cover hover:scale-102 transition-transform duration-700"
-            />
-          </div>
-          <div className="mt-8 md:mt-10 flex flex-wrap justify-center gap-3 md:gap-4">
-            <Link
-              href="/servicios"
-              className="inline-block px-6 md:px-8 py-3 md:py-4 text-white bg-orange-600 hover:bg-orange-700 rounded-md text-base md:text-lg font-semibold shadow-md transition-all duration-300 hover:shadow-lg"
-            >
-              Nuestros Servicios
-            </Link>
-            <Link
-              href="/contacto"
-              className="inline-block px-6 md:px-8 py-3 md:py-4 bg-white text-gray-800 hover:bg-gray-100 rounded-md text-base md:text-lg font-semibold shadow-md transition-all duration-300 hover:shadow-lg border border-gray-300"
-            >
-              Solicitar Consultoría
-            </Link>
           </div>
         </div>
-
-        {/* Elementos decorativos más sutiles */}
-        <div className="absolute top-20 right-0 w-64 h-64 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-        <div className="absolute bottom-10 left-20 w-80 h-80 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
       </section>
-
+      
       {/* Servicios destacados */}
       <section className="py-12 md:py-20 bg-white">
         <div className="container-custom">
@@ -110,8 +121,7 @@ export default function HomePage() {
           <div className="text-center mt-12">
             <Link 
               href="/servicios" 
-              className="inline-block px-8 py-3 bg-white text-orange-500 border-2 border-orange-500 hover:bg-orange-50 rounded-md font-semibold transition-colors"
-            >
+              className="inline-block px-8 py-3 bg-white text-orange-500 border-2 border-orange-500 hover:bg-orange-50 rounded-md font-semibold transition-colors">
               Ver catálogo completo de servicios
             </Link>
           </div>
@@ -191,7 +201,7 @@ export default function HomePage() {
         
         {/* Elemento decorativo */}
         <div className="absolute -bottom-10 -right-10 w-64 h-64 rounded-full bg-orange-100 opacity-50"></div>
-        <div className="absolute -top-10 -left-10 w-48 h-48 rounded-full bg-orange-100 opacity-40"></div>
+        <div className="absolute -left-10 w-48 h-48 rounded-full bg-orange-100 opacity-40"></div>
       </section>
 
       {/* Call to Action */}
