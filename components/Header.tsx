@@ -1,10 +1,18 @@
 'use client'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { X, Zap } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const pathname = usePathname() // Hook de Next.js para obtener la ruta actual
+  const [currentPath, setCurrentPath] = useState('')
+  
+  // Asegurarnos que la ruta actual se actualice correctamente tanto en cliente como servidor
+  useEffect(() => {
+    setCurrentPath(pathname || '')
+  }, [pathname])
 
   const toggleMenu = () => setMenuOpen(!menuOpen)
 
@@ -14,6 +22,14 @@ export function Header() {
     { name: 'Servicios', href: '/servicios' },
     { name: 'Portafolio', href: '/portafolio' },
   ]
+
+  const isActive = (path: string) => {
+    // Caso especial para la página de inicio
+    if (path === '/' && currentPath === '/') return true;
+    
+    // Para las demás páginas, verificar si la ruta actual comienza con la ruta del enlace
+    return path !== '/' && currentPath === path;
+  };
 
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
@@ -28,7 +44,7 @@ export function Header() {
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <Link 
             href="/contacto" 
-            className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+            className={`text-white ${currentPath === '/contacto' ? 'bg-orange-600' : 'bg-orange-500 hover:bg-orange-600'} focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800`}
           >
             Contáctanos
           </Link>
@@ -58,14 +74,15 @@ export function Header() {
                 <Link 
                   href={link.href}
                   className={`block py-2 px-3 rounded-sm md:p-0 ${
-                    typeof window !== 'undefined' && window.location.pathname === link.href
-                    ? 'text-orange-500 bg-transparent md:text-orange-500' 
+                    isActive(link.href)
+                    ? 'text-orange-500 bg-transparent md:text-orange-500 font-bold' 
                     : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
                   }`}
-                  aria-current={typeof window !== 'undefined' && window.location.pathname === link.href ? 'page' : undefined}
+                  aria-current={isActive(link.href) ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.name}
+                  {isActive(link.href) && <div className="hidden md:block h-0.5 w-full bg-orange-500 mt-1"></div>}
                 </Link>
               </li>
             ))}
