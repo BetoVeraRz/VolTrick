@@ -57,11 +57,11 @@ export default function HomePage() {
 
             {/* Columna derecha con imagen */}
             <div className="md:w-1/2 mt-8 md:mt-0">
-              <div className="rounded-xl md:rounded-2xl shadow-xl overflow-hidden border border-gray-200 h-full">
+              <div className="rounded-xl md:rounded-2xl shadow-xl overflow-hidden border border-gray-200 h-full transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] group">
                 <img
                   src="/image.png"
                   alt="Ingeniería eléctrica profesional"
-                  className="w-full h-full object-cover hover:scale-102 transition-transform duration-700"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:brightness-105 group-hover:saturate-110"
                 />
               </div>
             </div>
