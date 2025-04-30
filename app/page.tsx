@@ -125,7 +125,7 @@ export default function Page() {
             {/* Servicio 1 */}
             <div
               className="servicio-item bg-white p-6 md:p-8 rounded-lg shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 gradient-border"
-              style={{ "--index": 0 } as any}
+              style={{ "--index": "0" } as React.CSSProperties}
             >
               <div className="bg-orange-50 w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-100 transition-colors icon-pulse">
                 <Activity className="text-orange-600 icon-float" size={28} />
@@ -155,7 +155,7 @@ export default function Page() {
             {/* Servicio 2 */}
             <div
               className="servicio-item bg-white p-6 md:p-8 rounded-lg shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 gradient-border"
-              style={{ "--index": 1 } as any}
+              style={{ "--index": "1" } as React.CSSProperties}
             >
               <div className="bg-orange-50 w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-100 transition-colors icon-pulse">
                 <Zap className="text-orange-600 icon-float" size={28} />
@@ -185,7 +185,7 @@ export default function Page() {
             {/* Servicio 3 */}
             <div
               className="servicio-item bg-white p-6 md:p-8 rounded-lg shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 gradient-border"
-              style={{ "--index": 2 } as any}
+              style={{ "--index": "2" } as React.CSSProperties}
             >
               <div className="bg-orange-50 w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-100 transition-colors icon-pulse">
                 <Database className="text-orange-600 icon-float" size={28} />
@@ -285,7 +285,7 @@ export default function Page() {
             {/* Ventaja 1 */}
             <div
               className="ventaja-item bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative z-10 gradient-border"
-              style={{ "--index": 0 } as any}
+              style={{ "--index": "0" } as React.CSSProperties}
             >
               <div className="flex items-center justify-center w-14 h-14 rounded-full bg-orange-100 mb-6 icon-pulse">
                 <Award className="text-orange-600 icon-float" size={24} />
@@ -323,7 +323,7 @@ export default function Page() {
             {/* Ventaja 2 */}
             <div
               className="ventaja-item bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative z-10 gradient-border"
-              style={{ "--index": 1 } as any}
+              style={{ "--index": "1" } as React.CSSProperties}
             >
               <div className="flex items-center justify-center w-14 h-14 rounded-full bg-orange-100 mb-6 icon-pulse">
                 <Shield className="text-orange-600 icon-float" size={24} />
@@ -361,7 +361,7 @@ export default function Page() {
             {/* Ventaja 3 */}
             <div
               className="ventaja-item bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative z-10 gradient-border"
-              style={{ "--index": 2 } as any}
+              style={{ "--index": "2" } as React.CSSProperties}
             >
               <div className="flex items-center justify-center w-14 h-14 rounded-full bg-orange-100 mb-6 icon-pulse">
                 <Activity className="text-orange-600 icon-float" size={24} />
