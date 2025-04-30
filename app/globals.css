@@ -20,15 +20,6 @@
   --light-bg: var(--color-light-gray);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-dark);
-    --foreground: var(--color-light-gray);
-    --muted: #333333;
-    --light-bg: #222222;
-  }
-}
-
 @layer base {
   body {
     background: var(--background);
