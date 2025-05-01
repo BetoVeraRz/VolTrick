@@ -67,13 +67,13 @@ export default function Page() {
                 <div className="flex items-start gap-2">
                   <CheckCircle className="text-orange-500 mt-.5" size={40} />
                   <p className="text-sm text-gray-700">
-                    <span className="font-semibold">+200 proyectos</span> implementados con éxito en el sector industrial
+                    <span className="font-semibold">+50 proyectos</span> implementados con éxito en el sector industrial
                   </p>
                 </div>
                 <div className="flex items-start gap-2">
                   <Award className="text-orange-500 mt-.5" size={40} />
                   <p className="text-sm text-gray-700">
-                    <span className="font-semibold">10+ años</span> de experiencia en el sector eléctrico
+                    <span className="font-semibold">+10 años</span> de experiencia en el sector eléctrico
                   </p>
                 </div>
               </div>

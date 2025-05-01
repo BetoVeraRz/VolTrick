@@ -47,7 +47,7 @@ export default function NosotrosPage() {
                     <TrendingUp className="text-orange-600" size={20} />
                   </div>
                   <div>
-                    <p className="font-bold">+500</p>
+                    <p className="font-bold">+50</p>
                     <p className="text-sm text-gray-600">Proyectos completados</p>
                   </div>
                 </div>
@@ -56,7 +56,7 @@ export default function NosotrosPage() {
                     <Coffee className="text-orange-600" size={20} />
                   </div>
                   <div>
-                    <p className="font-bold">10 años</p>
+                    <p className="font-bold">+10 años</p>
                     <p className="text-sm text-gray-600">De experiencia</p>
                   </div>
                 </div>
@@ -149,13 +149,13 @@ export default function NosotrosPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Nuestro Equipo</h2>
             <p className="text-lg max-w-3xl mx-auto text-gray-600">
-              Contamos con un equipo de profesionales altamente capacitados y con amplia experiencia en el sector 
-              eléctrico y energético.
+              Contamos con un equipo de ingenieros expertos en el cumplimiento del Código de Red,
+              calidad de energía y soluciones energéticas, listos para atender tus necesidades.
             </p>
             <div className="w-20 h-1 bg-orange-500 mx-auto mt-6"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="hidden md:grid md:grid-cols-3 gap-8 md:gap-10">
             {/* Miembro 1 */}
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100 text-center">
               <div className="rounded-full overflow-hidden shadow-md mb-6 mx-auto w-32 h-32 border-2 border-orange-100">
@@ -163,9 +163,9 @@ export default function NosotrosPage() {
                   <Users size={48} className="text-orange-600" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-1">Juan Pérez</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-1">Joel Jiménez</h3>
               <p className="text-orange-600 font-medium mb-3">Director General</p>
-              <p className="text-sm text-gray-600">Más de 15 años de experiencia en el sector energético e ingeniería eléctrica.</p>
+              <p className="text-sm text-gray-600">Especialista en calidad de energía y análisis de sistemas eléctricos complejos.</p>
             </div>
             
             {/* Miembro 2 */}
@@ -175,9 +175,9 @@ export default function NosotrosPage() {
                   <Users size={48} className="text-orange-600" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-1">María González</h3>
-              <p className="text-orange-600 font-medium mb-3">Ingeniera Principal</p>
-              <p className="text-sm text-gray-600">Especialista en calidad de energía y análisis de sistemas eléctricos complejos.</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-1">Jorge Arroyo </h3>
+              <p className="text-orange-600 font-medium mb-3">Consultor Técnico</p>
+              <p className="text-sm text-gray-600">Asesoría especializada en soluciones eléctricas y atención a clientes industriales.</p>
             </div>
             
             {/* Miembro 3 */}
@@ -187,9 +187,9 @@ export default function NosotrosPage() {
                   <Users size={48} className="text-orange-600" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-1">Carlos Rodríguez</h3>
-              <p className="text-orange-600 font-medium mb-3">Consultor Técnico</p>
-              <p className="text-sm text-gray-600">Experto en cumplimiento de Código de Red y normativas eléctricas.</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-1">Braulio Jiménez</h3>
+              <p className="text-orange-600 font-medium mb-3">Coordinador de Desarrollo Digital</p>
+              <p className="text-sm text-gray-600">Responsable de desarrollo digital y estrategia de marca.</p>
             </div>
             
           </div>
