@@ -3,6 +3,10 @@ import { Resend } from 'resend';
 
 declare module 'resend';
 
+if (!process.env.RESEND_API_KEY) {
+  throw new Error('RESEND_API_KEY is not set. Please define it in your environment variables.');
+}
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -15,9 +19,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
       // Enviar correo usando Resend
+      const recipient = process.env.EMAIL_TO;
+      if (!recipient) {
+        throw new Error('EMAIL_TO is not set. Please define it in your environment variables.');
+      }
+
       await resend.emails.send({
         from: 'Voltrik <onboarding@resend.dev>', // Cambia esto si es necesario
-        to: process.env.EMAIL_TO || '',
+        to: recipient,
         subject: 'Nuevo mensaje de contacto',
         html: `
           <h1>Nuevo mensaje de contacto</h1>

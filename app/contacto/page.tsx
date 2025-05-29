@@ -34,7 +34,7 @@ export default function ContactoPage() {
         setFormData({ nombre: '', email: '', telefono: '', servicio: '', mensaje: '' });
       } else {
         const errorData = await response.json();
-        setStatus({ success: false, error: true, message: errorData.message || 'Error al enviar el mensaje.' });
+        setStatus({ success: false, error: true, message: errorData.error || 'Error al enviar el mensaje.' });
       }
     } catch (error) {
       setStatus({ success: false, error: true, message: 'Error de conexión. Intenta nuevamente.' });
@@ -157,7 +157,7 @@ export default function ContactoPage() {
                     <div>
                       <h3 className="font-bold text-lg">Teléfono</h3>
                       <p className="text-lg">3312547558</p>
-                      <p className="text-sm text-gray mt-1">Lunes a Viernes, 9:00 - 18:00</p>
+                      <p className="text-sm text-gray-500 mt-1">Lunes a Viernes, 9:00 - 18:00</p>
                     </div>
                   </li>
                   
@@ -167,8 +167,8 @@ export default function ContactoPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg">Correo electrónico</h3>
-                      <p className="text-lg">joeljmze@gmail.com</p>
-                      <p className="text-sm text-gray mt-1">¡Responderemos lo antes posible!</p>
+                      <p className="text-lg">{process.env.NEXT_PUBLIC_CONTACT_EMAIL}</p>
+                      <p className="text-sm text-gray-500 mt-1">¡Responderemos lo antes posible!</p>
                     </div>
                   </li>
                   
@@ -179,7 +179,7 @@ export default function ContactoPage() {
                     <div>
                       <h3 className="font-bold text-lg">Dirección</h3>
                       <p className="text-lg">Guadalajara, Jalisco</p>
-                      <p className="text-sm text-gray mt-1"> Sin oficinas físicas.</p>
+                      <p className="text-sm text-gray-500 mt-1"> Sin oficinas físicas.</p>
                     </div>
                   </li>
                   
@@ -190,7 +190,7 @@ export default function ContactoPage() {
                     <div>
                       <h3 className="font-bold text-lg">Horario de atención</h3>
                       <p className="text-lg">Lunes a Viernes</p>
-                      <p className="text-sm text-gray mt-1">9:00 AM - 6:00 PM</p>
+                      <p className="text-sm text-gray-500 mt-1">9:00 AM - 6:00 PM</p>
                     </div>
                   </li>
                 </ul>
