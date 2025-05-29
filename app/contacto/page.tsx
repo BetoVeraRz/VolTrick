@@ -1,6 +1,46 @@
+"use client";
+
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { useState } from 'react';
 
 export default function ContactoPage() {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    telefono: '',
+    servicio: '',
+    mensaje: '',
+  });
+  const [status, setStatus] = useState({ success: false, error: false, message: '' });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus({ success: false, error: false, message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus({ success: true, error: false, message: 'Mensaje enviado con éxito.' });
+        setFormData({ nombre: '', email: '', telefono: '', servicio: '', mensaje: '' });
+      } else {
+        const errorData = await response.json();
+        setStatus({ success: false, error: true, message: errorData.error || 'Error al enviar el mensaje.' });
+      }
+    } catch (error) {
+      setStatus({ success: false, error: true, message: 'Error de conexión. Intenta nuevamente.' });
+    }
+  };
+
   return (
     <>
       {/* Cabecera de contacto */}
@@ -22,12 +62,14 @@ export default function ContactoPage() {
             {/* Formulario */}
             <div>
               <h2 className="text-2xl font-bold mb-6">Envíanos un mensaje</h2>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="nombre" className="block mb-2 font-medium">Nombre completo</label>
                   <input 
                     type="text" 
                     id="nombre" 
+                    value={formData.nombre}
+                    onChange={handleChange}
                     placeholder="Escribe tu nombre" 
                     className="w-full border border-muted p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   />
@@ -38,6 +80,8 @@ export default function ContactoPage() {
                   <input 
                     type="email" 
                     id="email" 
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="correo@ejemplo.com" 
                     className="w-full border border-muted p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   />
@@ -48,6 +92,8 @@ export default function ContactoPage() {
                   <input 
                     type="tel" 
                     id="telefono" 
+                    value={formData.telefono}
+                    onChange={handleChange}
                     placeholder="(55) 1234-5678" 
                     className="w-full border border-muted p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   />
@@ -57,6 +103,8 @@ export default function ContactoPage() {
                   <label htmlFor="servicio" className="block mb-2 font-medium">Servicio de interés</label>
                   <select 
                     id="servicio" 
+                    value={formData.servicio}
+                    onChange={handleChange}
                     className="w-full border border-muted p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option value="">Seleccionar servicio</option>
@@ -73,6 +121,8 @@ export default function ContactoPage() {
                   <textarea 
                     id="mensaje" 
                     rows={5} 
+                    value={formData.mensaje}
+                    onChange={handleChange}
                     placeholder="Escribe tu mensaje aquí..." 
                     className="w-full border border-muted p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   ></textarea>
@@ -86,6 +136,12 @@ export default function ContactoPage() {
                   Enviar mensaje
                 </button>
               </form>
+
+              {status.message && (
+                <p className={`mt-4 text-sm ${status.success ? 'text-green-600' : 'text-red-600'}`}>
+                  {status.message}
+                </p>
+              )}
             </div>
             
             {/* Información de contacto */}
@@ -100,8 +156,8 @@ export default function ContactoPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg">Teléfono</h3>
-                      <p className="text-lg">(55) 1234-5678</p>
-                      <p className="text-sm text-gray mt-1">Lunes a Viernes, 9:00 - 18:00</p>
+                      <p className="text-lg">3312547558</p>
+                      <p className="text-sm text-gray-500 mt-1">Lunes a Viernes, 9:00 - 18:00</p>
                     </div>
                   </li>
                   
@@ -111,8 +167,8 @@ export default function ContactoPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg">Correo electrónico</h3>
-                      <p className="text-lg">info@voltrik.com</p>
-                      <p className="text-sm text-gray mt-1">¡Responderemos lo antes posible!</p>
+                      <p className="text-lg">{process.env.NEXT_PUBLIC_CONTACT_EMAIL}</p>
+                      <p className="text-sm text-gray-500 mt-1">¡Responderemos lo antes posible!</p>
                     </div>
                   </li>
                   
@@ -122,8 +178,8 @@ export default function ContactoPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg">Dirección</h3>
-                      <p className="text-lg">Av. Principal #123</p>
-                      <p className="text-sm text-gray mt-1">Colonia Centro, Ciudad de México</p>
+                      <p className="text-lg">Guadalajara, Jalisco</p>
+                      <p className="text-sm text-gray-500 mt-1"> Sin oficinas físicas.</p>
                     </div>
                   </li>
                   
@@ -134,7 +190,7 @@ export default function ContactoPage() {
                     <div>
                       <h3 className="font-bold text-lg">Horario de atención</h3>
                       <p className="text-lg">Lunes a Viernes</p>
-                      <p className="text-sm text-gray mt-1">9:00 AM - 6:00 PM</p>
+                      <p className="text-sm text-gray-500 mt-1">9:00 AM - 6:00 PM</p>
                     </div>
                   </li>
                 </ul>

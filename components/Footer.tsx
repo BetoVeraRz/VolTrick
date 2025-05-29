@@ -109,7 +109,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={18} className="text-orange-500 mt-1 flex-shrink-0" />
-                <span className="text-gray-300">Zapopan, Jalisco</span>
+                <span className="text-gray-300">Guadalajara, Jalisco</span>
               </li>
               <li className="flex items-start gap-2">
                 <Clock size={18} className="text-orange-500 mt-1 flex-shrink-0" />
