@@ -174,7 +174,7 @@ export default function ServiciosPageRedesignedV2() {
                 <div
                   key={service.id}
                   className="service-item bg-white rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  style={{ "--index": index } as any}
+                  style={{ "--index": index } as React.CSSProperties}
                 >
                   <div className="flex flex-col md:flex-row">
                     {/* Icono y color lateral */}
@@ -296,7 +296,7 @@ export default function ServiciosPageRedesignedV2() {
           <div ref={benefitsRef} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div
               className="benefit-item bg-white p-8 rounded-3xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-              style={{ "--index": 0 } as any}
+              style={{ "--index": 0 } as React.CSSProperties}
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-orange-300 rounded-2xl flex items-center justify-center">
@@ -312,7 +312,7 @@ export default function ServiciosPageRedesignedV2() {
 
             <div
               className="benefit-item bg-white p-8 rounded-3xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-              style={{ "--index": 1 } as any}
+              style={{ "--index": 1 } as React.CSSProperties}
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-orange-300 rounded-2xl flex items-center justify-center">
@@ -328,7 +328,7 @@ export default function ServiciosPageRedesignedV2() {
 
             <div
               className="benefit-item bg-white p-8 rounded-3xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-              style={{ "--index": 2 } as any}
+              style={{ "--index": 2 } as React.CSSProperties}
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-orange-300 rounded-2xl flex items-center justify-center">

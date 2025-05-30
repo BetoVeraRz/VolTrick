@@ -119,7 +119,7 @@ export default function NosotrosPageMinimal() {
       <section className="py-20 bg-gray-50 relative">
         <div className="container-custom">
           <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div className="stat-item text-center" style={{ "--index": 0 } as any}>
+            <div className="stat-item text-center" style={{ "--index": 0 } as React.CSSProperties}>
               <div className="w-16 h-16 mx-auto mb-4 bg-orange-500 rounded-2xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
                 <TrendingUp className="text-white" size={24} />
               </div>
@@ -127,7 +127,7 @@ export default function NosotrosPageMinimal() {
               <p className="text-gray-600">Proyectos</p>
             </div>
 
-            <div className="stat-item text-center" style={{ "--index": 1 } as any}>
+            <div className="stat-item text-center" style={{ "--index": 1 } as React.CSSProperties}>
               <div className="w-16 h-16 mx-auto mb-4 bg-orange-500 rounded-2xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
                 <Coffee className="text-white" size={24} />
               </div>
@@ -135,7 +135,7 @@ export default function NosotrosPageMinimal() {
               <p className="text-gray-600">Años</p>
             </div>
 
-            <div className="stat-item text-center" style={{ "--index": 2 } as any}>
+            <div className="stat-item text-center" style={{ "--index": 2 } as React.CSSProperties}>
               <div className="w-16 h-16 mx-auto mb-4 bg-orange-500 rounded-2xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
                 <Users className="text-white" size={24} />
               </div>
@@ -143,7 +143,7 @@ export default function NosotrosPageMinimal() {
               <p className="text-gray-600">Expertos</p>
             </div>
 
-            <div className="stat-item text-center" style={{ "--index": 3 } as any}>
+            <div className="stat-item text-center" style={{ "--index": 3 } as React.CSSProperties}>
               <div className="w-16 h-16 mx-auto mb-4 bg-orange-500 rounded-2xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
                 <Shield className="text-white" size={24} />
               </div>
@@ -193,7 +193,7 @@ export default function NosotrosPageMinimal() {
             <div ref={achievementsRef} className="space-y-6">
               <div
                 className="achievement-item bg-gray-50 p-6 rounded-2xl hover:shadow-lg transition-all duration-300"
-                style={{ "--index": 0 } as any}
+                style={{ "--index": 0 } as React.CSSProperties}
               >
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -210,7 +210,7 @@ export default function NosotrosPageMinimal() {
 
               <div
                 className="achievement-item bg-gray-50 p-6 rounded-2xl hover:shadow-lg transition-all duration-300"
-                style={{ "--index": 1 } as any}
+                style={{ "--index": 1 } as React.CSSProperties}
               >
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -227,7 +227,7 @@ export default function NosotrosPageMinimal() {
 
               <div
                 className="achievement-item bg-gray-50 p-6 rounded-2xl hover:shadow-lg transition-all duration-300"
-                style={{ "--index": 2 } as any}
+                style={{ "--index": 2 } as React.CSSProperties}
               >
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -337,7 +337,7 @@ export default function NosotrosPageMinimal() {
 
           <div ref={teamRef} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Liderazgo */}
-            <div className="team-item text-center" style={{ "--index": 0 } as any}>
+            <div className="team-item text-center" style={{ "--index": 0 } as React.CSSProperties}>
               <div className="w-20 h-20 bg-orange-500 rounded-2xl flex items-center justify-center mb-6 mx-auto icon-float">
                 <Briefcase className="text-white" size={32} />
               </div>
@@ -349,7 +349,7 @@ export default function NosotrosPageMinimal() {
             </div>
 
             {/* Consultoría */}
-            <div className="team-item text-center" style={{ "--index": 1 } as any}>
+            <div className="team-item text-center" style={{ "--index": 1 } as React.CSSProperties}>
               <div className="w-20 h-20 bg-orange-500 rounded-2xl flex items-center justify-center mb-6 mx-auto icon-float">
                 <Activity className="text-white" size={32} />
               </div>
@@ -361,7 +361,7 @@ export default function NosotrosPageMinimal() {
             </div>
 
             {/* Innovación */}
-            <div className="team-item text-center" style={{ "--index": 2 } as any}>
+            <div className="team-item text-center" style={{ "--index": 2 } as React.CSSProperties}>
               <div className="w-20 h-20 bg-orange-500 rounded-2xl flex items-center justify-center mb-6 mx-auto icon-float">
                 <Zap className="text-white" size={32} />
               </div>
