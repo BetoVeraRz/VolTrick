@@ -1,181 +1,365 @@
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+"use client"
 
-export default function ContactoPage() {
+import { useEffect, useRef } from "react"
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle, CheckCircle, Star, Zap } from "lucide-react"
+
+export default function ContactoPageRedesigned() {
+  const formRef = useRef<HTMLDivElement>(null)
+  const contactRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-in")
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.1,
+    })
+
+    if (formRef.current) {
+      const formItems = formRef.current.querySelectorAll(".form-item")
+      formItems.forEach((item) => observer.observe(item))
+    }
+
+    if (contactRef.current) {
+      const contactItems = contactRef.current.querySelectorAll(".contact-item")
+      contactItems.forEach((item) => observer.observe(item))
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
-      {/* Cabecera de contacto */}
-      <section className="bg-light-bg py-16">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-6">Contáctanos</h1>
-            <p className="text-lg">
-              Estamos aquí para responder a tus preguntas y ofrecerte una asesoría personalizada sobre nuestros servicios y soluciones.
+      {/* Hero Section */}
+      <section className="relative pt-36 pb-24 bg-white overflow-hidden">
+        {/* Elementos decorativos sutiles */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-orange-50 rounded-full opacity-60"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-orange-100 rounded-full opacity-40"></div>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center bg-orange-50 rounded-full px-6 py-3 mb-8">
+              <MessageCircle className="text-orange-600 mr-2" size={20} />
+              <span className="text-orange-800 font-medium">Hablemos de tu proyecto</span>
+            </div>
+
+            <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight text-gray-900">
+              Contáctanos <span className="text-orange-500">Hoy</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Estamos listos para ayudarte a optimizar tu instalación eléctrica. Obtén una consulta gratuita y descubre
+              cómo podemos mejorar la eficiencia energética de tu empresa.
             </p>
+
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2">
+                <CheckCircle className="text-orange-500" size={16} />
+                <span className="text-sm text-gray-700">Consulta gratuita</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2">
+                <Clock className="text-orange-500" size={16} />
+                <span className="text-sm text-gray-700">Respuesta en 24h</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2">
+                <Star className="text-orange-500" size={16} />
+                <span className="text-sm text-gray-700">Asesoría especializada</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Transición suave */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
       </section>
 
       {/* Formulario e información de contacto */}
-      <section className="py-16">
+      <section className="py-20 bg-gray-50 relative">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Formulario */}
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Envíanos un mensaje</h2>
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="nombre" className="block mb-2 font-medium">Nombre completo</label>
-                  <input 
-                    type="text" 
-                    id="nombre" 
-                    placeholder="Escribe tu nombre" 
-                    className="w-full border border-muted p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
+          <div className="grid lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+            {/* Formulario - 2/3 del ancho */}
+            <div className="lg:col-span-2">
+              <div className="bg-white rounded-3xl shadow-lg p-8 md:p-12">
+                <div className="mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Envíanos tu <span className="text-orange-500">consulta</span>
+                  </h2>
+                  <p className="text-lg text-gray-600">
+                    Completa el formulario y nuestro equipo de expertos se pondrá en contacto contigo para ofrecerte una
+                    solución personalizada.
+                  </p>
                 </div>
-                
-                <div>
-                  <label htmlFor="email" className="block mb-2 font-medium">Correo electrónico</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    placeholder="correo@ejemplo.com" 
-                    className="w-full border border-muted p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="telefono" className="block mb-2 font-medium">Teléfono</label>
-                  <input 
-                    type="tel" 
-                    id="telefono" 
-                    placeholder="(55) 1234-5678" 
-                    className="w-full border border-muted p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="servicio" className="block mb-2 font-medium">Servicio de interés</label>
-                  <select 
-                    id="servicio" 
-                    className="w-full border border-muted p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    <option value="">Seleccionar servicio</option>
-                    <option value="calidad">Calidad de Energía</option>
-                    <option value="codigo">Cumplimiento Código de Red</option>
-                    <option value="capacitores">Bancos de Capacitores</option>
-                    <option value="filtros">Filtros de Armónicas</option>
-                    <option value="soluciones">Soluciones Energéticas</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label htmlFor="mensaje" className="block mb-2 font-medium">Mensaje</label>
-                  <textarea 
-                    id="mensaje" 
-                    rows={5} 
-                    placeholder="Escribe tu mensaje aquí..." 
-                    className="w-full border border-muted p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  ></textarea>
-                </div>
-                
-                <button 
-                  type="submit" 
-                  className="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-md transition-colors flex items-center gap-2"
-                >
-                  <Send size={18} />
-                  Enviar mensaje
-                </button>
-              </form>
-            </div>
-            
-            {/* Información de contacto */}
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Información de contacto</h2>
-              
-              <div className="bg-light-bg p-8 rounded-lg">
-                <ul className="space-y-6">
-                  <li className="flex items-start gap-4">
-                    <div className="bg-primary p-3 rounded-md">
-                      <Phone className="text-white" size={24} />
+
+                <form ref={formRef} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="form-item">
+                      <label htmlFor="nombre" className="block mb-3 font-semibold text-gray-900">
+                        Nombre completo *
+                      </label>
+                      <input
+                        type="text"
+                        id="nombre"
+                        placeholder="Tu nombre completo"
+                        className="w-full border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:border-orange-400 transition-colors text-gray-900 placeholder-gray-400"
+                        required
+                      />
                     </div>
-                    <div>
-                      <h3 className="font-bold text-lg">Teléfono</h3>
-                      <p className="text-lg">(55) 1234-5678</p>
-                      <p className="text-sm text-gray mt-1">Lunes a Viernes, 9:00 - 18:00</p>
+
+                    <div className="form-item">
+                      <label htmlFor="empresa" className="block mb-3 font-semibold text-gray-900">
+                        Empresa
+                      </label>
+                      <input
+                        type="text"
+                        id="empresa"
+                        placeholder="Nombre de tu empresa"
+                        className="w-full border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:border-orange-400 transition-colors text-gray-900 placeholder-gray-400"
+                      />
                     </div>
-                  </li>
-                  
-                  <li className="flex items-start gap-4">
-                    <div className="bg-primary p-3 rounded-md">
-                      <Mail className="text-white" size={24} />
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="form-item">
+                      <label htmlFor="email" className="block mb-3 font-semibold text-gray-900">
+                        Correo electrónico *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        placeholder="correo@empresa.com"
+                        className="w-full border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:border-orange-400 transition-colors text-gray-900 placeholder-gray-400"
+                        required
+                      />
                     </div>
-                    <div>
-                      <h3 className="font-bold text-lg">Correo electrónico</h3>
-                      <p className="text-lg">info@voltrik.com</p>
-                      <p className="text-sm text-gray mt-1">¡Responderemos lo antes posible!</p>
+
+                    <div className="form-item">
+                      <label htmlFor="telefono" className="block mb-3 font-semibold text-gray-900">
+                        Teléfono *
+                      </label>
+                      <input
+                        type="tel"
+                        id="telefono"
+                        placeholder="(55) 1234-5678"
+                        className="w-full border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:border-orange-400 transition-colors text-gray-900 placeholder-gray-400"
+                        required
+                      />
                     </div>
-                  </li>
-                  
-                  <li className="flex items-start gap-4">
-                    <div className="bg-primary p-3 rounded-md">
-                      <MapPin className="text-white" size={24} />
+                  </div>
+
+                  <div className="form-item">
+                    <label htmlFor="servicio" className="block mb-3 font-semibold text-gray-900">
+                      Servicio de interés
+                    </label>
+                    <select
+                      id="servicio"
+                      className="w-full border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:border-orange-400 transition-colors text-gray-900"
+                    >
+                      <option value="">Selecciona un servicio</option>
+                      <option value="calidad">Calidad de Energía</option>
+                      <option value="codigo">Cumplimiento Código de Red</option>
+                      <option value="capacitores">Bancos de Capacitores</option>
+                      <option value="filtros">Filtros de Armónicas</option>
+                      <option value="soluciones">Soluciones Energéticas Integrales</option>
+                      <option value="consultoria">Consultoría General</option>
+                    </select>
+                  </div>
+
+                  <div className="form-item">
+                    <label htmlFor="mensaje" className="block mb-3 font-semibold text-gray-900">
+                      Cuéntanos sobre tu proyecto *
+                    </label>
+                    <textarea
+                      id="mensaje"
+                      rows={6}
+                      placeholder="Describe tu proyecto, necesidades específicas, problemas actuales o cualquier información relevante que nos ayude a entender mejor cómo podemos ayudarte..."
+                      className="w-full border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:border-orange-400 transition-colors text-gray-900 placeholder-gray-400 resize-none"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <div className="form-item">
+                    <div className="flex items-start gap-3 mb-6">
+                      <input
+                        type="checkbox"
+                        id="acepto"
+                        className="mt-1 w-5 h-5 text-orange-500 border-2 border-gray-300 rounded focus:ring-orange-400"
+                        required
+                      />
+                      <label htmlFor="acepto" className="text-sm text-gray-600">
+                        Acepto el tratamiento de mis datos personales de acuerdo con la política de privacidad
+                        y autorizo el contacto para fines comerciales.
+                      </label>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-lg">Dirección</h3>
-                      <p className="text-lg">Av. Principal #123</p>
-                      <p className="text-sm text-gray mt-1">Colonia Centro, Ciudad de México</p>
-                    </div>
-                  </li>
-                  
-                  <li className="flex items-start gap-4">
-                    <div className="bg-primary p-3 rounded-md">
-                      <Clock className="text-white" size={24} />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg">Horario de atención</h3>
-                      <p className="text-lg">Lunes a Viernes</p>
-                      <p className="text-sm text-gray mt-1">9:00 AM - 6:00 PM</p>
-                    </div>
-                  </li>
-                </ul>
+
+                    <button
+                      type="submit"
+                      className="w-full bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg flex items-center justify-center gap-3 group"
+                    >
+                      <Send size={20} className="transform group-hover:translate-x-1 transition-transform" />
+                      Enviar consulta
+                    </button>
+                  </div>
+                </form>
               </div>
-              
-              <div className="mt-8">
-                <h3 className="font-bold text-xl mb-4">Síguenos en redes</h3>
-                <div className="flex gap-4">
-                  <a href="#" className="bg-light-bg p-3 rounded-full hover:bg-primary hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                  </a>
-                  <a href="#" className="bg-light-bg p-3 rounded-full hover:bg-primary hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-                  </a>
-                  <a href="#" className="bg-light-bg p-3 rounded-full hover:bg-primary hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                  </a>
-                  <a href="#" className="bg-light-bg p-3 rounded-full hover:bg-primary hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                  </a>
+            </div>
+
+            {/* Información de contacto - 1/3 del ancho */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-8">
+                <div className="bg-white rounded-3xl shadow-lg p-8 mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                    Información de <span className="text-orange-500">contacto</span>
+                  </h3>
+
+                  <div ref={contactRef} className="space-y-6">
+                    <div className="contact-item flex items-start gap-4 p-4 rounded-2xl hover:bg-gray-50 transition-colors">
+                      <div className="bg-orange-500 p-3 rounded-xl flex-shrink-0">
+                        <Phone className="text-white" size={20} />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 mb-1">Teléfono</h4>
+                        <p className="text-gray-600 font-medium">(55) 1234-5678</p>
+                        <p className="text-sm text-gray-500">Lun - Vie, 9:00 - 18:00</p>
+                      </div>
+                    </div>
+
+                    <div className="contact-item flex items-start gap-4 p-4 rounded-2xl hover:bg-gray-50 transition-colors">
+                      <div className="bg-orange-500 p-3 rounded-xl flex-shrink-0">
+                        <Mail className="text-white" size={20} />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 mb-1">Email</h4>
+                        <p className="text-gray-600 font-medium">info@voltrik.com</p>
+                        <p className="text-sm text-gray-500">Respuesta en 24h</p>
+                      </div>
+                    </div>
+
+                    <div className="contact-item flex items-start gap-4 p-4 rounded-2xl hover:bg-gray-50 transition-colors">
+                      <div className="bg-orange-500 p-3 rounded-xl flex-shrink-0">
+                        <MapPin className="text-white" size={20} />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 mb-1">Ubicación</h4>
+                        <p className="text-gray-600 font-medium">Ciudad de México</p>
+                        <p className="text-sm text-gray-500">Cobertura nacional</p>
+                      </div>
+                    </div>
+
+                    <div className="contact-item flex items-start gap-4 p-4 rounded-2xl hover:bg-gray-50 transition-colors">
+                      <div className="bg-orange-500 p-3 rounded-xl flex-shrink-0">
+                        <Clock className="text-white" size={20} />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 mb-1">Horarios</h4>
+                        <p className="text-gray-600 font-medium">Lun - Vie</p>
+                        <p className="text-sm text-gray-500">9:00 AM - 6:00 PM</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tarjeta de beneficios */}
+                <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl p-8 text-white">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="bg-white/20 p-3 rounded-xl">
+                      <Zap className="text-white" size={24} />
+                    </div>
+                    <h3 className="text-xl font-bold">¿Por qué elegirnos?</h3>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <CheckCircle size={18} className="text-orange-200 flex-shrink-0" />
+                      <span className="text-sm">Consulta inicial gratuita</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle size={18} className="text-orange-200 flex-shrink-0" />
+                      <span className="text-sm">+10 años de experiencia</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle size={18} className="text-orange-200 flex-shrink-0" />
+                      <span className="text-sm">Soluciones personalizadas</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle size={18} className="text-orange-200 flex-shrink-0" />
+                      <span className="text-sm">Garantía de calidad</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle size={18} className="text-orange-200 flex-shrink-0" />
+                      <span className="text-sm">Soporte técnico continuo</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Transición suave */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
-      {/* Mapa */}
-      <section className="py-8">
+      {/* CTA de urgencia */}
+      <section className="py-20 bg-white relative">
         <div className="container-custom">
-          <div className="rounded-lg overflow-hidden shadow-lg h-96 bg-light-bg">
-            <div className="w-full h-full flex items-center justify-center">
-              <p className="text-center">
-                <MapPin size={48} className="text-primary mx-auto mb-4" />
-                <span className="block text-xl font-bold">Aquí iría el mapa de Google Maps</span>
-                <span className="text-gray">Av. Principal #123, Colonia Centro, CDMX</span>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-gray-50 rounded-3xl p-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                ¿Necesitas atención <span className="text-orange-500">inmediata?</span>
+              </h2>
+              <p className="text-xl text-gray-600 mb-8">
+                Para emergencias o consultas urgentes, contáctanos directamente por teléfono. Nuestro equipo está listo
+                para ayudarte.
               </p>
+
+              <div className="flex flex-wrap justify-center gap-6">
+                <a
+                  href="tel:+525512345678"
+                  className="inline-flex items-center px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg group"
+                >
+                  <Phone size={20} className="mr-3" />
+                  Llamar ahora
+                </a>
+                <a
+                  href="mailto:info@voltrik.com"
+                  className="inline-flex items-center px-8 py-4 bg-white border-2 border-orange-500 text-orange-500 hover:bg-orange-50 rounded-xl font-bold text-lg transition-all duration-300"
+                >
+                  <Mail size={20} className="mr-3" />
+                  Enviar email
+                </a>
+              </div>
+
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mb-3">
+                    <Clock className="text-white" size={20} />
+                  </div>
+                  <p className="text-gray-600 font-medium">Respuesta rápida</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mb-3">
+                    <Star className="text-white" size={20} />
+                  </div>
+                  <p className="text-gray-600 font-medium">Atención personalizada</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mb-3">
+                    <CheckCircle className="text-white" size={20} />
+                  </div>
+                  <p className="text-gray-600 font-medium">Sin compromiso</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </>
-  );
+  )
 }
