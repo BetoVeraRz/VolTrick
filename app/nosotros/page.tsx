@@ -1,226 +1,441 @@
-import { Users, Target, BookOpen, Award, Briefcase, TrendingUp, CheckCircle, Coffee } from 'lucide-react';
-import Link from 'next/link';
+"use client"
 
-export default function NosotrosPage() {
+import { useEffect, useRef } from "react"
+import Link from "next/link"
+import {
+  Users,
+  Target,
+  BookOpen,
+  Award,
+  Briefcase,
+  TrendingUp,
+  CheckCircle,
+  Coffee,
+  ArrowRight,
+  Zap,
+  Shield,
+  Activity,
+  Star,
+  Calendar,
+  MapPin,
+  Lightbulb,
+  Settings,
+  Globe,
+} from "lucide-react"
+
+export default function NosotrosPageMinimal() {
+  const achievementsRef = useRef<HTMLDivElement>(null)
+  const statsRef = useRef<HTMLDivElement>(null)
+  const teamRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-in")
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.1,
+    })
+
+    // Observar elementos
+    if (achievementsRef.current) {
+      const items = achievementsRef.current.querySelectorAll(".achievement-item")
+      items.forEach((item) => observer.observe(item))
+    }
+
+    if (statsRef.current) {
+      const statItems = statsRef.current.querySelectorAll(".stat-item")
+      statItems.forEach((item) => observer.observe(item))
+    }
+
+    if (teamRef.current) {
+      const teamItems = teamRef.current.querySelectorAll(".team-item")
+      teamItems.forEach((item) => observer.observe(item))
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
-      {/* Cabecera de Nosotros */}
-      <section className="bg-gradient-to-br from-white via-gray-50 to-gray-100 py-16 md:py-20 relative overflow-hidden">
-        <div className="container-custom pt-15">
-          <div className="max-w-3xl mx-auto text-center relative z-10">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">Sobre Nosotros</h1>
-            <p className="text-lg md:text-xl text-gray-700">
-              Voltrik es una empresa mexicana especializada en soluciones de calidad de energía eléctrica y servicios profesionales para la industria.
-            </p>
-            <div className="w-20 h-1 bg-orange-500 mx-auto mt-8"></div>
-          </div>
-        </div>
-        
+      {/* Hero Section Minimalista */}
+      <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden">
         {/* Elementos decorativos sutiles */}
-        <div className="absolute top-20 right-20 w-64 h-64 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-orange-50 rounded-full opacity-60"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-orange-100 rounded-full opacity-40"></div>
+        </div>
+
+        <div className="container-custom relative z-10 text-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center justify-center bg-orange-50 rounded-full px-6 py-3 mb-8">
+              <Zap className="text-orange-600 mr-2" size={20} />
+              <span className="text-orange-800 font-medium">Expertos en Energía Eléctrica</span>
+            </div>
+
+            <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight text-gray-900">
+              Sobre <span className="text-orange-500">Voltrik</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Una empresa mexicana especializada en soluciones de calidad de energía eléctrica y servicios profesionales
+              para la industria desde 2015.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2">
+                <Calendar className="text-orange-500" size={16} />
+                <span className="text-sm text-gray-700">Fundada en 2015</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2">
+                <MapPin className="text-orange-500" size={16} />
+                <span className="text-sm text-gray-700">México</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2">
+                <Star className="text-orange-500" size={16} />
+                <span className="text-sm text-gray-700">+50 Proyectos</span>
+              </div>
+            </div>
+
+            <Link
+              href="#historia"
+              className="inline-flex items-center px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 btn-shine"
+            >
+              Conoce Nuestra Historia
+              <ArrowRight className="ml-2" size={20} />
+            </Link>
+          </div>
+        </div>
+
+        {/* Transición suave */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
       </section>
 
-      {/* Nuestra historia */}
-      <section className="py-16 md:py-24">
+      {/* Estadísticas Minimalistas */}
+      <section className="py-20 bg-gray-50 relative">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="stat-item text-center" style={{ "--index": 0 } as any}>
+              <div className="w-16 h-16 mx-auto mb-4 bg-orange-500 rounded-2xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                <TrendingUp className="text-white" size={24} />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-2">+50</h3>
+              <p className="text-gray-600">Proyectos</p>
+            </div>
+
+            <div className="stat-item text-center" style={{ "--index": 1 } as any}>
+              <div className="w-16 h-16 mx-auto mb-4 bg-orange-500 rounded-2xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                <Coffee className="text-white" size={24} />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-2">+10</h3>
+              <p className="text-gray-600">Años</p>
+            </div>
+
+            <div className="stat-item text-center" style={{ "--index": 2 } as any}>
+              <div className="w-16 h-16 mx-auto mb-4 bg-orange-500 rounded-2xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                <Users className="text-white" size={24} />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-2">3</h3>
+              <p className="text-gray-600">Expertos</p>
+            </div>
+
+            <div className="stat-item text-center" style={{ "--index": 3 } as any}>
+              <div className="w-16 h-16 mx-auto mb-4 bg-orange-500 rounded-2xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                <Shield className="text-white" size={24} />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-2">100%</h3>
+              <p className="text-gray-600">Éxito</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Transición suave */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
+      </section>
+
+      {/* Historia y Logros */}
+      <section id="historia" className="py-20 bg-white relative">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div>
-              <div className="inline-flex items-center justify-center bg-orange-100 p-3 rounded-lg mb-6">
-                <Briefcase size={28} className="text-orange-600" />
+              <div className="inline-flex items-center justify-center bg-orange-50 rounded-full px-4 py-2 mb-6">
+                <Briefcase className="text-orange-600 mr-2" size={18} />
+                <span className="text-orange-800 font-medium text-sm">Nuestra Historia</span>
               </div>
-              <h2 className="text-3xl font-bold mb-6 text-gray-800">Nuestra Historia</h2>
-              <p className="mb-4 text-gray-600 leading-relaxed">
-                Fundada en 2015, Voltrik nació con la misión de proporcionar soluciones efectivas para los problemas de calidad de energía que afectan a las empresas mexicanas.
+
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                Una Historia de <span className="text-orange-500">Innovación</span>
+              </h2>
+
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Fundada en 2015, Voltrik nació con la misión de proporcionar soluciones efectivas para los problemas de
+                calidad de energía que afectan a las empresas mexicanas.
               </p>
-              <p className="mb-4 text-gray-600 leading-relaxed">
-                Lo que comenzó como una pequeña consultoría ha crecido hasta convertirse en un referente en el sector de la ingeniería eléctrica especializada, 
-                atendiendo proyectos para grandes industrias y organizaciones a lo largo del país.
+
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Lo que comenzó como una pequeña consultoría ha crecido hasta convertirse en un referente en el sector de
+                la ingeniería eléctrica especializada, atendiendo proyectos para grandes industrias a lo largo del país.
               </p>
-              <p className="text-gray-600 leading-relaxed">
-                Nuestro equipo de ingenieros altamente capacitados combina conocimientos técnicos avanzados con una comprensión profunda 
-                de las necesidades específicas del mercado mexicano, permitiéndonos ofrecer soluciones a medida y efectivas.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-4 mt-8">
-                <div className="flex items-center gap-2">
-                  <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="text-orange-600" size={20} />
-                  </div>
-                  <div>
-                    <p className="font-bold">+50</p>
-                    <p className="text-sm text-gray-600">Proyectos completados</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
-                    <Coffee className="text-orange-600" size={20} />
-                  </div>
-                  <div>
-                    <p className="font-bold">+10 años</p>
-                    <p className="text-sm text-gray-600">De experiencia</p>
-                  </div>
-                </div>
-              </div>
+
+              <Link
+                href="/contacto"
+                className="inline-flex items-center text-orange-500 hover:text-orange-600 font-semibold group"
+              >
+                Trabajemos juntos
+                <ArrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform" size={18} />
+              </Link>
             </div>
-            
-            <div className="rounded-xl overflow-hidden shadow-lg">
-              <img
-                src="/hero.jpg"
-                alt="Historia de Voltrik"
-                className="w-full h-auto hover:scale-102 transition-transform duration-700"
-              />
+
+            <div ref={achievementsRef} className="space-y-6">
+              <div
+                className="achievement-item bg-gray-50 p-6 rounded-2xl hover:shadow-lg transition-all duration-300"
+                style={{ "--index": 0 } as any}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Lightbulb className="text-white" size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Innovación Constante</h3>
+                    <p className="text-gray-600">
+                      Implementamos tecnologías de vanguardia para ofrecer las mejores soluciones energéticas.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="achievement-item bg-gray-50 p-6 rounded-2xl hover:shadow-lg transition-all duration-300"
+                style={{ "--index": 1 } as any}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Settings className="text-white" size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Soluciones Personalizadas</h3>
+                    <p className="text-gray-600">
+                      Cada proyecto es único y desarrollamos soluciones específicas para cada cliente.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="achievement-item bg-gray-50 p-6 rounded-2xl hover:shadow-lg transition-all duration-300"
+                style={{ "--index": 2 } as any}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Globe className="text-white" size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Alcance Nacional</h3>
+                    <p className="text-gray-600">
+                      Atendemos proyectos en todo México con el mismo nivel de excelencia y profesionalismo.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Transición suave */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
       </section>
 
-      {/* Misión, Visión y Valores */}
-      <section className="py-16 md:py-24 bg-gray-50 relative overflow-hidden">
-        <div className="container-custom relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Misión, Visión y Valores</h2>
-            <p className="text-lg max-w-2xl mx-auto text-gray-600">
-              En Voltrik nos guiamos por principios claros para brindar el mejor servicio
-            </p>
-            <div className="w-20 h-1 bg-orange-500 mx-auto mt-6"></div>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 md:gap-10">
-            {/* Misión */}
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-orange-100 mb-6">
-                <Target size={24} className="text-orange-600" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-800">Misión</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Ofrecer soluciones energéticas innovadoras y de alta calidad que mejoren la eficiencia, 
-                reduzcan costos y optimicen el funcionamiento de las instalaciones eléctricas de nuestros clientes.
-              </p>
-            </div>
-            
-            {/* Visión */}
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-orange-100 mb-6">
-                <BookOpen size={24} className="text-orange-600" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-800">Visión</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Ser reconocidos como líderes en soluciones de calidad de energía en México, 
-                destacándonos por nuestra excelencia técnica, innovación constante y compromiso con la sostenibilidad.
-              </p>
-            </div>
-            
-            {/* Valores */}
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-orange-100 mb-6">
-                <Award size={24} className="text-orange-600" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-800">Valores</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start gap-2">
-                  <CheckCircle size={18} className="text-orange-500 mt-1 flex-shrink-0" />
-                  <span><strong>Excelencia</strong> en cada proyecto que emprendemos.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle size={18} className="text-orange-500 mt-1 flex-shrink-0" />
-                  <span><strong>Integridad</strong> y transparencia en todas nuestras acciones.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle size={18} className="text-orange-500 mt-1 flex-shrink-0" />
-                  <span><strong>Innovación</strong> buscando continuamente mejores soluciones.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle size={18} className="text-orange-500 mt-1 flex-shrink-0" />
-                  <span><strong>Compromiso</strong> con el cliente y el medio ambiente.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        {/* Elemento decorativo */}
-        <div className="absolute -bottom-10 -right-10 w-64 h-64 rounded-full bg-orange-100 opacity-50"></div>
-        <div className="absolute -top-10 -left-10 w-48 h-48 rounded-full bg-orange-100 opacity-40"></div>
-      </section>
-
-      {/* Nuestro equipo */}
-      <section className="py-16 md:py-24">
+      {/* Misión, Visión y Valores Minimalista */}
+      <section className="py-20 bg-gray-50 relative">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Nuestro Equipo</h2>
-            <p className="text-lg max-w-3xl mx-auto text-gray-600">
-              Contamos con un equipo de ingenieros expertos en el cumplimiento del Código de Red,
-              calidad de energía y soluciones energéticas, listos para atender tus necesidades.
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Nuestros <span className="text-orange-500">Principios</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Los valores que nos guían para brindar el mejor servicio
             </p>
-            <div className="w-20 h-1 bg-orange-500 mx-auto mt-6"></div>
           </div>
 
-          <div className="hidden md:grid md:grid-cols-3 gap-8 md:gap-10">
-            {/* Miembro 1 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100 text-center">
-              <div className="rounded-full overflow-hidden shadow-md mb-6 mx-auto w-32 h-32 border-2 border-orange-100">
-                <div className="w-full h-full bg-orange-50 flex items-center justify-center">
-                  <Users size={48} className="text-orange-600" />
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Misión */}
+            <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                <Target className="text-white" size={28} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Misión</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Ofrecer soluciones energéticas innovadoras y de alta calidad que mejoren la eficiencia, reduzcan costos
+                y optimicen el funcionamiento de las instalaciones eléctricas.
+              </p>
+            </div>
+
+            {/* Visión */}
+            <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                <BookOpen className="text-white" size={28} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Visión</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Ser reconocidos como líderes en soluciones de calidad de energía en México, destacándonos por nuestra
+                excelencia técnica e innovación constante.
+              </p>
+            </div>
+
+            {/* Valores */}
+            <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                <Award className="text-white" size={28} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Valores</h3>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="text-orange-500 flex-shrink-0" size={16} />
+                  <span className="text-gray-600">Excelencia en cada proyecto</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="text-orange-500 flex-shrink-0" size={16} />
+                  <span className="text-gray-600">Integridad y transparencia</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="text-orange-500 flex-shrink-0" size={16} />
+                  <span className="text-gray-600">Innovación continua</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="text-orange-500 flex-shrink-0" size={16} />
+                  <span className="text-gray-600">Compromiso total</span>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-1">Joel Jiménez</h3>
-              <p className="text-orange-600 font-medium mb-3">Director General</p>
-              <p className="text-sm text-gray-600">Especialista en calidad de energía y análisis de sistemas eléctricos complejos.</p>
             </div>
-            
-            {/* Miembro 2 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100 text-center">
-              <div className="rounded-full overflow-hidden shadow-md mb-6 mx-auto w-32 h-32 border-2 border-orange-100">
-                <div className="w-full h-full bg-orange-50 flex items-center justify-center">
-                  <Users size={48} className="text-orange-600" />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-1">Jorge Arroyo </h3>
-              <p className="text-orange-600 font-medium mb-3">Consultor Técnico</p>
-              <p className="text-sm text-gray-600">Asesoría especializada en soluciones eléctricas y atención a clientes industriales.</p>
-            </div>
-            
-            {/* Miembro 3 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100 text-center">
-              <div className="rounded-full overflow-hidden shadow-md mb-6 mx-auto w-32 h-32 border-2 border-orange-100">
-                <div className="w-full h-full bg-orange-50 flex items-center justify-center">
-                  <Users size={48} className="text-orange-600" />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-1">Braulio Jiménez</h3>
-              <p className="text-orange-600 font-medium mb-3">Coordinador de Desarrollo Digital</p>
-              <p className="text-sm text-gray-600">Responsable de desarrollo digital y estrategia de marca.</p>
-            </div>
-            
           </div>
         </div>
+
+        {/* Transición suave */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 md:py-20 bg-gradient-to-r from-orange-600 to-orange-700 text-white relative overflow-hidden">
-        <div className="container-custom text-center relative z-10">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 max-w-3xl mx-auto leading-tight">
-            Trabajemos juntos
-          </h2>
-          <p className="text-lg md:text-xl mb-8 md:mb-10 max-w-2xl mx-auto opacity-90">
-            Permítenos ayudarte a optimizar tu instalación eléctrica y mejorar la calidad de tu energía.
-          </p>
-          <Link
-            href="/contacto"
-            className="inline-flex items-center px-8 py-4 bg-white text-orange-600 hover:bg-orange-50 rounded-md text-lg font-semibold shadow-lg transition-all duration-300 hover:shadow-xl group"
-          >
-            Contáctenos ahora
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 transform group-hover:translate-x-1 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-          </Link>
+      {/* Equipo Profesional - Sin nombres específicos */}
+      <section className="py-20 bg-white relative">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center bg-orange-50 rounded-full px-6 py-3 mb-6">
+              <Users className="text-orange-600 mr-2" size={20} />
+              <span className="text-orange-800 font-medium">Nuestro Equipo</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Profesionalismo y <span className="text-orange-500">Experiencia</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Contamos con un equipo de ingenieros expertos certificados en calidad de energía, cumplimiento del Código
+              de Red y soluciones energéticas avanzadas.
+            </p>
+          </div>
+
+          <div ref={teamRef} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Liderazgo */}
+            <div className="team-item text-center" style={{ "--index": 0 } as any}>
+              <div className="w-20 h-20 bg-orange-500 rounded-2xl flex items-center justify-center mb-6 mx-auto icon-float">
+                <Briefcase className="text-white" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Liderazgo Técnico</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Dirección estratégica con amplia experiencia en análisis de sistemas eléctricos complejos y gestión de
+                proyectos industriales de gran escala.
+              </p>
+            </div>
+
+            {/* Consultoría */}
+            <div className="team-item text-center" style={{ "--index": 1 } as any}>
+              <div className="w-20 h-20 bg-orange-500 rounded-2xl flex items-center justify-center mb-6 mx-auto icon-float">
+                <Activity className="text-white" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Consultoría Especializada</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Asesoría técnica especializada en soluciones eléctricas personalizadas y atención directa a clientes
+                industriales con necesidades específicas.
+              </p>
+            </div>
+
+            {/* Innovación */}
+            <div className="team-item text-center" style={{ "--index": 2 } as any}>
+              <div className="w-20 h-20 bg-orange-500 rounded-2xl flex items-center justify-center mb-6 mx-auto icon-float">
+                <Zap className="text-white" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Desarrollo e Innovación</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Coordinación de desarrollo digital, estrategia de marca y implementación de tecnologías innovadoras para
+                optimizar procesos.
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <div className="inline-flex items-center justify-center bg-gray-50 rounded-full px-6 py-3">
+              <CheckCircle className="text-orange-500 mr-2" size={20} />
+              <span className="text-gray-700 font-medium">Equipo certificado con +10 años de experiencia</span>
+            </div>
+          </div>
         </div>
-        
-        {/* Elementos decorativos para el fondo */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute top-10 left-10 w-20 h-20 border-4 border-white rounded-full"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 border-4 border-white rounded-full"></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 border-4 border-white rounded-full"></div>
+
+        {/* Transición suave */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-orange-50 to-transparent"></div>
+      </section>
+
+      {/* CTA Final Minimalista */}
+      <section className="py-20 bg-orange-50 relative">
+        <div className="container-custom text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              ¿Listo para <span className="text-orange-500">Trabajar Juntos?</span>
+            </h2>
+            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+              Permítenos ayudarte a optimizar tu instalación eléctrica y mejorar la calidad de tu energía con soluciones
+              personalizadas y resultados garantizados.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-6">
+              <Link
+                href="/contacto"
+                className="inline-flex items-center px-10 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-full text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105 btn-shine group"
+              >
+                Contáctanos Ahora
+                <ArrowRight className="ml-3 transform group-hover:translate-x-1 transition-transform" size={20} />
+              </Link>
+              <Link
+                href="/servicios"
+                className="inline-flex items-center px-10 py-4 bg-white border-2 border-orange-500 text-orange-500 hover:bg-orange-50 rounded-full text-lg font-semibold transition-all duration-300"
+              >
+                Ver Servicios
+              </Link>
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mb-3">
+                  <CheckCircle className="text-white" size={20} />
+                </div>
+                <p className="text-gray-600 font-medium">Consulta Gratuita</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mb-3">
+                  <Shield className="text-white" size={20} />
+                </div>
+                <p className="text-gray-600 font-medium">Garantía de Calidad</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mb-3">
+                  <Star className="text-white" size={20} />
+                </div>
+                <p className="text-gray-600 font-medium">Resultados Comprobados</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
-  );
+  )
 }
