@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { Phone, Mail, MapPin, Clock, Send, MessageCircle, CheckCircle, Star, Zap } from "lucide-react"
 
 export default function ContactoPageRedesigned() {
-  const formRef = useRef<HTMLDivElement>(null)
+  const formRef = useRef<HTMLFormElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -193,7 +193,10 @@ export default function ContactoPageRedesigned() {
                         required
                       />
                       <label htmlFor="acepto" className="text-sm text-gray-600">
-                        Acepto el tratamiento de mis datos personales de acuerdo con la política de privacidad
+                        Acepto el tratamiento de mis datos personales de acuerdo con la{" "}
+                        <a href="#" className="text-orange-500 hover:text-orange-600 underline">
+                          política de privacidad
+                        </a>{" "}
                         y autorizo el contacto para fines comerciales.
                       </label>
                     </div>
